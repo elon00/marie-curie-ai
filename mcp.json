@@ -1,0 +1,56 @@
+{
+  "mcpServers": {
+    "marie-curie-ai": {
+      "command": "cargo",
+      "args": [
+        "run",
+        "--release",
+        "--quiet"
+      ],
+      "env": {
+        "RUST_LOG": "info",
+        "TITAN_PROTOCOL": "CURIE",
+        "FIPS_203_LEVEL": "ML-KEM-768",
+        "FIPS_204_LEVEL": "ML-DSA-65"
+      },
+      "tools": [
+        {
+          "name": "model_decay_chain_equilibrium",
+          "description": "Simulates radioactive secular equilibrium and alpha/beta decay emissions for Radium-226 and Polonium-210",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "isotope": {
+                "type": "string"
+              },
+              "initial_becquerels": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "isotope"
+            ]
+          }
+        },
+        {
+          "name": "calibrate_radiotherapeutic_dose",
+          "description": "Calculates ionizing radiation dosage, tissue absorption coefficients and oncology target exposure",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "tumor_depth_cm": {
+                "type": "number"
+              },
+              "beam_energy_mev": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "tumor_depth_cm"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
